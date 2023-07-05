@@ -1,0 +1,87 @@
+.list{
+    
+    li{
+        list-style: none;
+        margin-top: 20px;
+    }
+}
+.content {
+    display: flex;
+
+    .spinner_tovars{
+        margin: 0 auto;
+        padding-top: 30px;
+    }
+}
+.content ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.content_card{
+    position: relative;
+    width: 350px;
+    border: 1px solid black;
+    height: 450px;
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .title_card{
+        text-align: center;
+    }
+    img{
+        width: 90%;
+        height: 200px;
+        object-fit: cover;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 2px solid black;
+        box-shadow: 2px 2px 2px 2px grey;
+      
+    }
+    .description_card{
+        text-align: center;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .price_rating_card{
+        display: block;
+        text-align: center;
+        margin-top: 10px; 
+        position: absolute;
+        bottom: 10px; 
+        width: 100%;
+
+        .price_card{
+            margin-bottom: 2rem;
+            font-size: 20px;
+        }
+    }
+    .category_card{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .card_buy{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .del_card{
+        position: absolute;
+        top: 0;
+        left: 3px;
+    }
+}

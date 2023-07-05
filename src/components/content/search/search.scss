@@ -1,0 +1,18 @@
+.search_tovars {
+  display: block;
+
+    input {
+      border-radius: 5px 5px 5px 5px;
+      width: 40%;
+      height: 20%;
+      transition: width 1s;
+    }
+    input:hover {
+      border-radius: 5px 5px 5px 5px;
+      width: 80%;
+      transition: width 1s;
+    }
+    p{
+      margin-top: 15px;
+    }
+  }

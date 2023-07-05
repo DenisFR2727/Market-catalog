@@ -1,0 +1,26 @@
+.add-tovar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    form {
+      display: block;
+  
+      input {
+        display: block;
+        margin-top: 50px;
+      }
+      .form_container{
+        width: 300px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      button{
+        display: block;
+        margin: 0 auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+    }
+  }

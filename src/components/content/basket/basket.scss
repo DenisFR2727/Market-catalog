@@ -1,0 +1,238 @@
+.basket_page .basket_tovars {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(238, 228, 228, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.basket_page .basket_content{
+    width: 1020px;
+    height: 600px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transform: translate(-50%);
+    top: 50%;
+    left: 50%;
+    background-color: #fff;
+    overflow-x: auto;
+    border: 2px solid red;
+    border-radius: 15px 15px 15px 15px;
+}
+.basket_page .all_sum_busket{
+    position: absolute;
+    margin-top: 20px;
+    left: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px silid greenyellow;
+    width: 250px;
+    height: 100px;
+    background: rgb(34, 254, 9);
+    box-shadow: 5px 5px 5px 5px;
+    border-radius: 8px 8px 8px 8px;
+
+    p{
+        font-size: 20px;
+    }
+}
+.basket_page .basket_item{
+    align-items: center;
+    display: flex;
+    border: 1px solid black;
+    align-items: center;
+    width: 1000px;
+    justify-content: space-between;
+    margin-top: 10px;
+    img {
+        max-width: 20%;
+        max-height: 20%;
+        border: 1px solid black;
+      }
+    p {
+        width: 60%;
+        padding-left: 20px;
+    }
+    
+}
+.basket_page .basket_close{
+    button{
+        display: none;
+    }
+}
+.basket_page .back_tovars_btn{
+    display: flex;
+    justify-content: center;
+    width: 1020px;
+    margin: 0 auto;
+}
+// -------------------------Modal----------
+@mixin delete-button-style {
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+    background-color: red;
+    color: black;
+  }
+
+.basket_tovars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+    
+    .basket_content {
+        width: 1020px;
+        height: 600px;
+        position: relative;
+        background-color: #fff;
+        overflow-x: auto;
+        border: 2px solid red;
+        border-radius: 15px 15px 15px 15px;
+        
+          .basket_item{
+            display: flex;
+            border: 1px solid black;
+            align-items: center;
+            width: 1000px;
+            justify-content: space-between;
+            margin-top: 10px;
+
+            .delete_tovar_busket{
+               @include delete-button-style;
+              }
+            .image_link{
+                width: 30%;
+            }
+            .title-price{
+                display: flex;
+                width: 70%;
+                text-align: inherit;
+
+                p :nth-child(1){
+                    text-align: start;
+                }
+            }
+            img {
+                max-width: 10%;
+                max-height: 10%;
+                border: 1px solid black;
+                width: 30%;
+              }
+            p {
+                width: 60%;
+                padding-left: 20px;
+            }
+            .nav-link{
+                
+
+                img{
+                    width: 30%;
+                    height: 30%;
+                }
+            }
+           
+        }
+            .all_sum_busket{
+                position: absolute;
+                margin-top: 20px;
+                left: 700px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 2px silid greenyellow;
+                width: 250px;
+                height: 100px;
+                background: rgb(34, 254, 9);
+                box-shadow: 5px 5px 5px 5px;
+                border-radius: 8px 8px 8px 8px;
+
+                p{
+                    font-size: 20px;
+                }
+            }
+      }
+  }
+  .basket_close {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 10px;
+       
+    p {
+        font-size: 25px;
+    }
+    button {
+        font-size: 20px;
+        height: 100%;
+        color: grey;
+        margin-top: 10px;
+    }
+}
+.delete_tovar_busket{
+    @include delete-button-style;
+   }
+.counter_tovar{
+    display: flex;
+    justify-content: center;
+    margin-right: 20px;
+
+    .counter{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .minus {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25px;
+        height: 25px;
+    }
+    .plus {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25px;
+        height: 25px;
+    }
+   
+}
+// ----------BasketPage----
+.basket_page{
+    .basket_item{
+        display: flex;
+        justify-content: space-between;
+
+        .title-price{
+            width: 40%;
+
+            p:nth-child(1){
+                color: green;
+            }
+            p:nth-child(2){
+                color: red;
+                font-size: 18px;
+            }
+        }
+    }
+    .image_link{
+        width: 30%;
+    }
+}
+ 

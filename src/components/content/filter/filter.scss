@@ -1,0 +1,36 @@
+.filter_menu {
+    width: 300px;
+    height: 500px;
+    transition: height 0.3s ease, width 0.3s ease;
+    
+  }
+.content_filter{
+    position: relative;
+    width: 300px;
+    height: 500px;
+    background: #757575;
+    border-radius: 0 0 10px 0;
+    p{
+      font-size: 20px;
+      margin-bottom: 0px;
+      margin-left: 20px;
+    }
+    form{
+       margin-top: 20px;
+       margin-left: 20px;
+    }
+    select{
+       margin-left: 20px;
+    }
+    button{
+       margin-top: 20px;
+       width: 120px;
+    }
+}
+
+@media (max-width: 360px) {
+  .filter_menu {
+    width: 100%;
+    height: auto;
+  }
+}

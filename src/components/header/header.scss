@@ -1,0 +1,15 @@
+header{
+    margin: 0 auto;
+    width: 100%;
+    height: 200px;
+    // background: blue($color: #3131eb);
+    
+    a{
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+    }
+    a:hover{
+        background: rgba(253, 255, 134, 0.306);
+        border-radius: 3px 3px 3px 3px;
+    }
+}

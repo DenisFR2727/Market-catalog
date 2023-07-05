@@ -1,0 +1,39 @@
+.info_card_content{
+    display: flex;
+    justify-content: center;
+
+    img{
+        width: auto;
+        height: auto;
+        max-width: 800px;
+        max-height: 600px;
+        object-fit: cover;
+        border: 1px solid blue;
+        box-shadow: 2px 2px 2px 2px grey;
+    }
+    .content_info_card{
+        width: 500px;
+        margin-left: 50px;
+
+        h2{
+          text-align: center;
+        }
+        .category_info{
+            text-align: left;
+        }
+        .description_info{
+            text-align: left;
+        }
+        .rating_info{
+            text-align: left;
+        }
+        .price_info{
+            text-align: center;
+            font-size: 24px;
+        }
+        .buttons_info{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
