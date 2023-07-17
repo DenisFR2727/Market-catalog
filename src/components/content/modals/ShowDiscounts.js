@@ -1,44 +1,17 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { v4 as uuidv4 } from 'uuid';
-import { addDiscountUser } from "../tovars/tovarsSlice";
+import { useSelector } from "react-redux";
 
 import "./showdiscounts.scss";
+import useInputWidthValidate from "../../hooks/form";
 
 const Discounts = () => {
-  const dispatch = useDispatch();
-  const [nameUserDisc, setUserDisc] = useState("");
-  const [emailUserDisc, setEmailUserDisc] = useState("");
   const [showModal, setShowModal] = useState(false);
   const addBasketTovar = useSelector(state => state.basket)
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const newDiscountUser = {
-      id: uuidv4(),
-      name: nameUserDisc,
-      email: emailUserDisc
-    }
-    if(newDiscountUser.name.length <= 0 || newDiscountUser.email.length <= 0){
-        return false;
-    }else{
-        dispatch(addDiscountUser(newDiscountUser))
-        setUserDisc("");
-        setEmailUserDisc("");
-        setShowModal(false);
-    }
-  }
-
-  const handleUserDiscount = (e) => {
-    const { name, value } = e.target;
-    if (name === 'name') {
-      setUserDisc(value);
-    }else if (name === "email") {
-      setEmailUserDisc(value);
-    }
-  }
-
+  
+  const {value, handleSubmit, handleChange, validate, borderError, hiddenModal } = useInputWidthValidate({id:"", name:"", email:""});
+  
+  const errors = validate();
+   console.log(hiddenModal)
   const handleCloseModal = () => {
     setShowModal(false);
   }
@@ -46,14 +19,14 @@ const Discounts = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowModal(true);
-    }, 100000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [addBasketTovar]);
 
 
     return (
-        <div className={`discounts_modal ${showModal ? '' : 'hidden'}`}>
+        <div className={`discounts_modal ${showModal ? '' : 'hidden'} ${showModal && hiddenModal ? 'hidden' : ''}`}>
             <div className="discounts_modal_content" >
             <button className="close_button" onClick={handleCloseModal}></button>
               <h3>Discounts 30%</h3>
@@ -62,13 +35,16 @@ const Discounts = () => {
                    <input type="text"
                           name="name" 
                           placeholder="name"
-                          value={nameUserDisc}
-                          onChange={handleUserDiscount}/>
+                          value={value.name}
+                          onChange={handleChange}
+                          className={borderError && value.name.length <= 0 ? "error_border" : ""}/>
                    <input type="email" 
                           placeholder="email"
                           name="email"
-                          value={emailUserDisc}
-                          onChange={handleUserDiscount} />
+                          value={value.email}
+                          onChange={handleChange}
+                          className={borderError && value.email.length <= 0 ? "error_border" : ""} />
+                          {errors}
                    <button>Send</button>
               </form>
             </div>

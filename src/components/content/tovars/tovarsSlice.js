@@ -14,7 +14,7 @@ const initialState = {
     filterOpen: false,
     selectOption: "All",
     discountUsers: [],
-    isPandingSearch: ''
+    displayedTovars: 6,
 }
 export const fetchTovars =  fetchedTovars;
 
@@ -100,10 +100,16 @@ const tovarsSlice = createSlice({
         },
         searchTovars(state,action) {
             const search = action.payload
-            state.tovars = state.originalTovars.filter((item) => item.title.toLowerCase().includes(search.toLowerCase()))
+            state.tovars = state.originalTovars.filter((item) => item.title.includes(search))
         },
         isPendingSearch(state,action) {
             state.isPandingSearch = action.payload;
+        },
+        nextDisplayedTovars(state,action) {
+            state.displayedTovars = action.payload;
+        },
+        backDisplayedTovars(state,action) {
+            state.displayedTovars = action.payload;
         }
     }, 
     extraReducers:(builder) => {
@@ -157,6 +163,8 @@ export const {
     filterPrice,
     addDiscountUser,
     searchTovars,
+    nextDisplayedTovars,
+    backDisplayedTovars
 
 } = actions;
 

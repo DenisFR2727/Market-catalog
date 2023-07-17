@@ -16,7 +16,7 @@
 .content ul{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     max-width: 1920px;
     margin: 0 auto;
 }
@@ -83,5 +83,16 @@
         position: absolute;
         top: 0;
         left: 3px;
+    }
+}
+.content_tovars_pagination{
+    display: block;
+    // margin-left: 50px;
+    margin-right: 50px;
+    button{
+        margin: 0 auto;
+        display: flex;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 }

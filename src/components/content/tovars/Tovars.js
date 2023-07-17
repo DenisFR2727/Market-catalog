@@ -1,27 +1,37 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useCallback, useRef,  } from "react";
 import { NavLink } from "react-router-dom";
 import {
         fetchTovars,
         tovarsList,
         selectCard,
         addTovar,
+        nextDisplayedTovars,
+        backDisplayedTovars,
 } from "./tovarsSlice";
 import "./tovars.scss";
 import BasketModal from "../basket/BasketModal";
 import Filter from "../filter/Filter";
 import ShowDiscounts from "../modals/ShowDiscounts.js";
 import useLoadingStatus from "../../hooks/loading";
+import Pagination from "../pagination/Pagination";
 
 const Tovars = () => {
     const dispatch = useDispatch();
     const tovars = useSelector(tovarsList);
     const showBasket = useSelector((state) => state.showBasket);
+    const displayedTovars = useSelector((state) => state.displayedTovars)
+
     const { loadingTovar, errorLoading } = useLoadingStatus();
+    const listRef = useRef(null);
 
 useEffect(() => {
     dispatch(fetchTovars());
-},[dispatch]) 
+},[dispatch])
+
+useEffect(() => {
+      listRef.current?.scrollIntoView()
+  }, [tovars,displayedTovars]);
 
 const renderTovars = useMemo(() =>{
 
@@ -44,12 +54,26 @@ const renderTovars = useMemo(() =>{
                             }                     
                     >Buy</button>
                 </div>
+                
             </li>
-        ))
+        )).slice(0, displayedTovars)
 
-    return <ul className="list">{list}</ul>
-},[dispatch, tovars]) 
-    
+    return <ul className="list">{list}
+               <div ref={listRef}></div>
+           </ul>
+},[dispatch, tovars, displayedTovars]) 
+
+const nextClickTovars = useCallback(() => {
+      dispatch(nextDisplayedTovars(displayedTovars + 6))
+},[dispatch, displayedTovars])
+
+const backClickTovars = useCallback(() => {
+      if(displayedTovars <= 6){
+        return false;
+      }
+      dispatch(backDisplayedTovars(displayedTovars - 6)) 
+},[dispatch, displayedTovars])
+
     return(<div className="content">
             <div className="filter">
                 <Filter />
@@ -58,9 +82,17 @@ const renderTovars = useMemo(() =>{
             <div className="spinner_tovars">
                   {loadingTovar}
                   {errorLoading}
-            </div> 
-                {renderTovars}
-                {showBasket && <BasketModal />}
+            </div>
+             <div className="content_tovars_pagination" >
+                <Pagination nextTovars={nextClickTovars}
+                            backTovars={backClickTovars}
+                 />
+                  {renderTovars}
+                <Pagination nextTovars={nextClickTovars}
+                            backTovars={backClickTovars}
+                 />
+             </div> 
+                  {showBasket && <BasketModal />}
            </div>)
 }
 export default Tovars;

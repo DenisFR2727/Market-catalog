@@ -24,7 +24,7 @@ const Basket = () => {
 
     useEffect(() => {
         refModalPage.current.scrollIntoView({ behavior: "smooth", block: "end" });
-      }, [isBasketOpen]);
+    }, [isBasketOpen]);
 
     const busketAdd = (arr) => {
           const current = arr.map((item, id) => (

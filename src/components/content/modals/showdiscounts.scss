@@ -95,3 +95,20 @@
       cursor: pointer;
     }
   }
+
+  .invalid-input{
+     border: 2px solid red;
+  }
+  .valid-input{
+    border: 2px solid green;
+  }
+
+  .inValid_name_desc{
+    color: red;
+  }
+  .inValid_email_desc{
+    color: red;
+  }
+  .error_border{
+    border: 2px solid red;
+  }

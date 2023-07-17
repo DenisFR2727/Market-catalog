@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { searchTovars, } from "../tovars/tovarsSlice";
-import { useState, useTransition } from "react";
+import { useState, useTransition, useEffect } from "react";
 
 import "./search.scss";
 
@@ -9,12 +9,22 @@ const Search = () => {
     const [search, setSearch] = useState("");
     const [isPending, startTransition] = useTransition();
 
+useEffect(() => {
+   const delay = setTimeout(() => {
+      startTransition(() => {
+         dispatch(searchTovars(search))
+      })
+         
+   },300)
+
+   return () => {
+      clearTimeout(delay)
+   };
+}, [search, startTransition, dispatch]);
+
     const handleChange = (e) => {
-         startTransition(() => {
             const searchTovar = e.target.value
-            setSearch(searchTovar);
-            dispatch(searchTovars(search))
-         })                 
+            setSearch(searchTovar);              
    }
     return (<div className="search_tovars">
                 <input type="text"
