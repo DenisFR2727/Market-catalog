@@ -5,11 +5,14 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import "./nav.scss";
 import Search from "../content/search/Search";
+import ExitLogin from "../content/login/exitLogin";
 
 const Nav = () => {
     const location = useLocation();
-    const lengtTovars = useSelector((state) => state.basket);
-    
+    const lengthTovars = useSelector((state) => state.basket);
+    const isUserLoggedIn = useSelector((state) => state.isUserLoggedIn);
+    const currentUserLogin = useSelector(state => state.currentUserLogin);
+
 useEffect(() => {
       window.scrollTo(0, 0); // Прокручуємо сторінку вгору при зміні шляху
 }, [location]);
@@ -27,23 +30,33 @@ useEffect(() => {
                         Tovars
                      </NavLink>
                     </li>
+                    {isUserLoggedIn && (
                     <li>
-                     <NavLink to="/AddTovar"  className="nav-link">
+                      <NavLink to="/AddTovar" className="nav-link">
                         Add New Tovar
-                     </NavLink>
-                    </li>
+                      </NavLink>
+                    </li>)}
                     <li>
                      <NavLink to="/Basket"  className="nav-link">
                         <div className="basket_length">
                             <FontAwesomeIcon icon={faShoppingBasket} />
-                            {lengtTovars.length === 0 ? 
+                            {lengthTovars.length === 0 ? 
                               null 
-                             :<p className="length_tovars_basket">{lengtTovars.length}</p>
+                             :<p className="length_tovars_basket">{lengthTovars.length}</p>
                             }
                         </div>
                      </NavLink>
                     </li>
                     <li><Search /></li>
+                    <li>
+                      <NavLink to="/Registration" className="nav-link">Registration</NavLink>
+                      <NavLink to="/Login" className="nav-link">Login</NavLink>
+                      <div className="current_login_exit">
+                         <p>{currentUserLogin}</p>
+                         <ExitLogin />
+                      </div>
+                      
+                    </li>
                 </ul>  
             </nav>
   </div>)

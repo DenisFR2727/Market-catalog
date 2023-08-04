@@ -3,10 +3,12 @@ import { infoTovar,addTovar } from "./tovarsSlice"
 import { NavLink } from "react-router-dom"
 import "./infocard.scss"
 
+
 const InfoCard = () => {
     const dispatch = useDispatch();
     const card = useSelector(infoTovar)
-   
+    console.log(card)
+
     return (<div className="info_card_content">
              <img 
                   src={card.image} 

@@ -11,7 +11,7 @@ const Discounts = () => {
   const {value, handleSubmit, handleChange, validate, borderError, hiddenModal } = useInputWidthValidate({id:"", name:"", email:""});
   
   const errors = validate();
-   console.log(hiddenModal)
+   
   const handleCloseModal = () => {
     setShowModal(false);
   }

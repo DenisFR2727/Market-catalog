@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit"; 
-import tovarsReducer from "../components/content/tovars/tovarsSlice";
+import ordersReducer from "../components/content/tovars/tovarsSlice";
+
 
 const stringMiddleware = () => (next) => (action) => {
     if (typeof action === 'string') {
@@ -11,7 +12,7 @@ const stringMiddleware = () => (next) => (action) => {
 };
 
 const store = configureStore({
-        reducer: tovarsReducer,
+        reducer: ordersReducer,
         middleware: getDefaultMiddleware => getDefaultMiddleware().concat(stringMiddleware),
         devTools: process.env.NODE_ENV !== 'production', 
     })

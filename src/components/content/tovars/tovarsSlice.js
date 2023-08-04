@@ -15,6 +15,8 @@ const initialState = {
     selectOption: "All",
     discountUsers: [],
     displayedTovars: 6,
+    isUserLoggedIn: false,
+    currentUserLogin: ""
 }
 export const fetchTovars =  fetchedTovars;
 
@@ -87,7 +89,7 @@ const tovarsSlice = createSlice({
           } 
              localStorage.setItem("sum",state.sum);
         },
-        filterModal(state,action) {
+        filterModal(state) {
           if(!state.filterOpen) {
                 state.filterOpen = true;
           }else{
@@ -110,6 +112,12 @@ const tovarsSlice = createSlice({
         },
         backDisplayedTovars(state,action) {
             state.displayedTovars = action.payload;
+        },
+        setIsUserLoggedIn(state,action) {
+            state.isUserLoggedIn = action.payload;
+        },
+        setCurrentUserLogin(state,action) {
+            state.currentUserLogin = action.payload;
         }
     }, 
     extraReducers:(builder) => {
@@ -128,8 +136,8 @@ const tovarsSlice = createSlice({
     }
 })
 export const tovarsList = createSelector(
-    state => state.tovars,
-    tovars => tovars
+    state => state.tovars ,
+    tovars => tovars 
 )
 export const infoTovar = createSelector(
     state => state.infocard,
@@ -164,7 +172,9 @@ export const {
     addDiscountUser,
     searchTovars,
     nextDisplayedTovars,
-    backDisplayedTovars
+    backDisplayedTovars,
+    setIsUserLoggedIn,
+    setCurrentUserLogin
 
 } = actions;
 
